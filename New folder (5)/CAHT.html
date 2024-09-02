@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدردشة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .plus-sign {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #6f42c1;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>الدردشة</h2>
+        <label for="chatToken">أدخل الرمز التعريفي للشخص الآخر:</label>
+        <input type="text" id="chatToken" name="chatToken" placeholder="الرمز التعريفي">
+        <button onclick="startChat()">ابدأ الدردشة</button>
+    </div>
+    <div class="plus-sign" onclick="toggleDropdown()">+</div>
+    <div class="dropdown" id="dropdownMenu">
+        <a href="index.html">تسجيل الخروج</a>
+    </div>
+    <script>
+        function startChat() {
+            var chatToken = document.getElementById('chatToken').value;
+            if (chatToken) {
+                // Simulate starting chat
+                alert('تم بدء الدردشة مع: ' + chatToken);
+            } else {
+                alert('يرجى إدخال الرمز التعريفي.');
+            }
+        }
+
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // Hide the dropdown if clicking outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.plus-sign')) {
+                var dropdowns = document.getElementsByClassName("dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
